@@ -1,0 +1,199 @@
+/* General Styles */
+body {
+    background-color: #f9fafb;
+    font-family: 'Arial', sans-serif;
+    color: #333333;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #444444;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Button Styles */
+.btn {
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    color: #ffffff;
+}
+
+.btn-info {
+    background-color: #17a2b8;
+    border: none;
+    color: #ffffff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: #ffffff;
+}
+
+.btn-warning {
+    background-color: #ffc107;
+    border: none;
+    color: #212529;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    color: #ffffff;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+.table th,
+.table td {
+    padding: 12px 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f4f4f4;
+    color: #333333;
+    font-weight: bold;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #f2f2f2;
+}
+
+.table-danger {
+    background-color: #f8d7da !important;
+}
+
+.table-warning {
+    background-color: #fff3cd !important;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Container Styling */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Form Styling */
+form .form-control {
+    border-radius: 6px;
+    font-size: 14px;
+    padding: 10px;
+}
+
+form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+form button[type="submit"] {
+    margin-top: 15px;
+}
+
+/* Header Section */
+header {
+    background-color: #007bff;
+    padding: 20px;
+    text-align: center;
+    color: white;
+}
+
+header h1 {
+    font-size: 28px;
+    margin: 0;
+}
+
+/* Card Styles for Dashboard */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    margin-bottom: 20px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card h5 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.card-total {
+    border-left: 5px solid #28a745;
+}
+
+.card-expired {
+    border-left: 5px solid #dc3545;
+}
+
+.card-near-expiry {
+    border-left: 5px solid #ffc107;
+}
+
+/* Icons */
+.icon-expired {
+    color: #dc3545;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.icon-near-expiry {
+    color: #ffc107;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+.icon-total {
+    color: #28a745;
+    font-size: 20px;
+    margin-right: 8px;
+}
+
+/* Footer */
+footer {
+    background-color: #f4f4f4;
+    padding: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #666666;
+}
+
+footer a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
