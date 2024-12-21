@@ -1,16 +1,10 @@
-
 <?php
-/* 
-File: add_product.php
-Description: PHP script to insert a new product into the database using prepared statements.
-*/
-
-// Database connection
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "supermarket_db";
 
+// Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
@@ -18,27 +12,36 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve input values from the form
-$product_name = $_POST['product_name'];
-$brand_name = $_POST['brand_name'];
-$sku = $_POST['sku'];
-$expiry_date = !empty($_POST['expiry_date']) ? $_POST['expiry_date'] : NULL;
-$quantity = $_POST['quantity'];
+// Insert product
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $product_name = $_POST['product_name'];
+    $brand_name = $_POST['brand_name'];
+    $sku = $_POST['sku'];
+    $expiry_date = $_POST['expiry_date'];
+    $quantity = $_POST['quantity'];
 
-// Insert query using prepared statements to prevent SQL injection
-$sql = "INSERT INTO products (product_name, brand_name, sku, expiry_date, quantity) VALUES (?, ?, ?, ?, ?)";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("ssssi", $product_name, $brand_name, $sku, $expiry_date, $quantity);
+    $sql = "INSERT INTO products (product_name, brand_name, sku, expiry_date, quantity) 
+            VALUES ('$product_name', '$brand_name', '$sku', '$expiry_date', '$quantity')";
 
-// Execute query and provide feedback
-if ($stmt->execute()) {
-    echo "<h3 style='color:green;'>New product added successfully!</h3>";
-    echo "<a href='add_product.html'>Add Another Product</a> | <a href='dashboard.php'>Go to Dashboard</a>";
-} else {
-    echo "<h3 style='color:red;'>Error: " . $stmt->error . "</h3>";
+    if ($conn->query($sql) === TRUE) {
+        // Pass product name to notification script
+        echo "<script>
+                const productName = '$product_name';
+                const notification = document.createElement('div');
+                notification.className = 'alert-notification';
+                notification.innerHTML = `<strong>Success!</strong> Product <em>${productName}</em> added successfully!`;
+                document.body.appendChild(notification);
+
+                setTimeout(() => {
+                    notification.remove();
+                }, 5000);
+
+                window.location.href = 'add_product.html';
+              </script>";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 }
 
-// Close connections
-$stmt->close();
 $conn->close();
 ?>
